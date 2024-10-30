@@ -1,0 +1,206 @@
+.todo_mgmt_wrapper {
+    min-height: 100vh;
+    width: 100vw;
+    background: linear-gradient(90deg, rgba(67,70,80,1) 35%, rgba(55,65,102,1) 70%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.todo_controls, .current_tasks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 65%;
+    padding: 30px;
+    background-color: #b4b4b4;
+    border-radius: 20px;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
+}
+
+.add_task_btn, .clear_tasks_btn {
+    font-family: 'Roboto';
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    padding: 10px;
+    border-radius: 3px;
+    color: #FFFFFF;
+    transition: .2s;
+    box-shadow: 0 2px 3px 1px rgba(0,0,0,0.5);
+}
+
+.add_task_btn {
+    background-color: rgba(0, 30, 200, 0.7);
+
+    &:before {
+        content: '';
+        display: block;
+        background-image: url(/svg/plus.svg);
+        background-size: cover;
+        width: 20px;
+        height: 20px;
+    }
+
+    &:hover {
+        background-color: rgba(0, 38, 255, 0.925);
+    }
+}
+
+.task_input_frame {
+    position: relative;
+}
+
+.task_input_frame::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #6e6666;
+    bottom: 0;
+    left: 0;
+}
+
+.add_task_input {
+    width: 140px;
+    border: none;
+    background-color: transparent;
+    font-family: 'Roboto';
+    font-size: 14px;
+    color: #ebebeb;
+
+    &::placeholder {
+        color: #ebebeb;
+    }
+
+    &:focus-visible {
+        outline: none;
+    }
+}
+
+.clear_tasks_btn {
+    background-color: rgba(200, 0, 0, 0.7);
+
+    &::after {
+        content: '';
+        display: block;
+        background-image: url(/svg/menu.svg);
+        background-size: cover;
+        width: 20px;
+        height: 20px;
+    }
+
+    &:hover {
+        background-color: rgb(200, 0, 0);
+    }
+}
+
+.current_tasks {
+    gap: 30px;
+}
+
+.tasks_filters_list {
+    width: 100%;
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.tasks_filter {
+    text-transform: uppercase;
+    color: #d8d8d8;
+    cursor: pointer;
+    transition: .2s;
+    position: relative;
+}
+
+.tasks_filter.active {
+    color: #FFFFFF;
+
+    &::after {
+        content: '';
+        position: absolute;
+        display: block;
+        bottom: -5px;
+        width: 100%;
+        height: 3px;
+        background-color: rgba(0, 30, 200, 0.7);
+        animation: Smooth_shape .5s ease-in-out;
+    }
+}
+
+.all_tasks_block {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+}
+
+.task_block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #FFFFFF;
+    border-radius: 0 10px;
+}
+
+.completed_task {
+    border: 1px solid #31b620;
+
+    & > div {
+        color:#17580f;
+    }
+}
+
+.deleted {
+    border: none;
+}
+
+.deleted_task {
+    text-decoration: line-through;
+    text-decoration-color: #a30000;
+}
+
+.current_task_controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.complete_btn {
+    border: none;
+    background: none;
+    background-image: url(/svg/check.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
+}
+
+.remove_btn {
+    border: none;
+    background: none;
+    background-image: url(/svg/trash.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
+}
+
+@keyframes Smooth_shape {
+    0% {
+        max-width: 0;
+    }
+
+    100% {
+        max-width: 500px;
+    }
+}
